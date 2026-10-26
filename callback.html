@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kết nối tài khoản – CheapGPT AI</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Kết nối tài khoản</h1>
+  <p class="muted">Trang này chỉ hiển thị địa chỉ hiện tại để bạn sao chép. Không có dữ liệu nào được gửi đi.</p>
+  <nav>
+    <a href="index.html">Trang chủ</a>
+    <a href="terms.html">Điều khoản sử dụng</a>
+    <a href="privacy.html">Chính sách quyền riêng tư</a>
+  </nav>
+
+  <h2>Bước tiếp theo</h2>
+  <p>Sao chép toàn bộ địa chỉ dưới đây và dán vào ô “Dán địa chỉ trang sau khi cho phép” trong công cụ CheapGPT Media.</p>
+  <textarea id="u" readonly style="width:100%;min-height:110px;font:13px/1.4 monospace;padding:10px"></textarea>
+  <p><button id="copy" style="padding:8px 16px;font:inherit;cursor:pointer">Sao chép địa chỉ</button> <span id="msg" class="muted"></span></p>
+
+  <footer>© 2026 CheapGPT AI</footer>
+</main>
+<script>
+  var box = document.getElementById("u");
+  box.value = location.href;
+  document.getElementById("copy").onclick = function () {
+    box.select();
+    var done = function () { document.getElementById("msg").textContent = "Đã sao chép."; };
+    (navigator.clipboard ? navigator.clipboard.writeText(box.value) : Promise.reject()).then(done, function () {
+      document.execCommand("copy"); done();
+    });
+  };
+</script>
+</body>
+</html>
